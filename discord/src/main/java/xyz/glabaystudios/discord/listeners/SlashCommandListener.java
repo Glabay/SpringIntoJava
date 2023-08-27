@@ -3,13 +3,13 @@ package xyz.glabaystudios.discord.listeners;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import xyz.glabaystudios.discord.commands.impl.AddBook;
-import xyz.glabaystudios.discord.commands.impl.BookShelf;
-import xyz.glabaystudios.discord.commands.impl.Register;
+import xyz.glabaystudios.discord.handlers.commands.impl.AddBook;
+import xyz.glabaystudios.discord.handlers.commands.impl.BookShelf;
+import xyz.glabaystudios.discord.handlers.commands.impl.Register;
 
 import java.util.Objects;
 
-public class DiscordListener extends ListenerAdapter {
+public class SlashCommandListener extends ListenerAdapter {
 
     @Override
     public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {

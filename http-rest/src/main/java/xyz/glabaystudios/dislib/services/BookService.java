@@ -39,6 +39,10 @@ public class BookService implements DateTimeUtils {
         return bookRepository.findByShelfIdAndOwnerDiscordId(shelfId, discordId).stream().map(this::convertObjectToDTO).collect(Collectors.toList());
     }
 
+    public List<BookDTO> findAllBooksNotOnShelves(Long discordId) {
+        return bookRepository.findByShelfIdLessThanAndOwnerDiscordId(0L, discordId).stream().map(this::convertObjectToDTO).collect(Collectors.toList());
+    }
+
     public BookDTO getBookDtoForIsbn10(Long isbn10) {
         var book = bookRepository.findByISBN10(isbn10);
         return book.map(this::convertObjectToDTO).orElse(null);
@@ -137,35 +141,35 @@ public class BookService implements DateTimeUtils {
     }
 
     public Book createNewBookObject(BookDTO dto) {
-        Book newBook = new Book();
-        newBook.setTitle(dto.getTitle());
-        newBook.setAuthor(dto.getAuthor());
-        newBook.setTheme(dto.getTheme());
-        newBook.setDescription(dto.getDescription());
-        newBook.setPublisher(dto.getPublisher());
-        newBook.setPublishedDate(dto.getPublishedDate());
-        newBook.setShelfId(newBook.getUid());
-        newBook.setOwnerDiscordId(dto.getOwnerDiscordId());
-        newBook.setISBN10(dto.getISBN10());
-        newBook.setISBN13(dto.getISBN13());
-        newBook.setCreatedOn(getCurrentDateAndTime());
-        newBook.setUpdatedOn(getCurrentDateAndTime());
+        var newBook = new Book();
+            newBook.setTitle(dto.getTitle());
+            newBook.setAuthor(dto.getAuthor());
+            newBook.setTheme(dto.getTheme());
+            newBook.setDescription(dto.getDescription());
+            newBook.setPublisher(dto.getPublisher());
+            newBook.setPublishedDate(dto.getPublishedDate());
+            newBook.setShelfId(-1L);
+            newBook.setOwnerDiscordId(dto.getOwnerDiscordId());
+            newBook.setISBN10(dto.getISBN10());
+            newBook.setISBN13(dto.getISBN13());
+            newBook.setCreatedOn(getCurrentDateAndTime());
+            newBook.setUpdatedOn(getCurrentDateAndTime());
 
         return newBook;
     }
 
     private BookDTO convertObjectToDTO(Book object) {
-        BookDTO dto = new BookDTO();
-        dto.setTitle(object.getTitle());
-        dto.setAuthor(object.getAuthor());
-        dto.setTheme(object.getTheme());
-        dto.setDescription(object.getDescription());
-        dto.setPublisher(object.getPublisher());
-        dto.setPublishedDate(object.getPublishedDate());
-        dto.setShelfId(object.getShelfId());
-        dto.setOwnerDiscordId(object.getOwnerDiscordId());
-        dto.setISBN10(object.getISBN10());
-        dto.setISBN13(object.getISBN13());
+        var dto = new BookDTO();
+            dto.setTitle(object.getTitle());
+            dto.setAuthor(object.getAuthor());
+            dto.setTheme(object.getTheme());
+            dto.setDescription(object.getDescription());
+            dto.setPublisher(object.getPublisher());
+            dto.setPublishedDate(object.getPublishedDate());
+            dto.setShelfId(object.getShelfId());
+            dto.setOwnerDiscordId(object.getOwnerDiscordId());
+            dto.setISBN10(object.getISBN10());
+            dto.setISBN13(object.getISBN13());
 
         return dto;
     }

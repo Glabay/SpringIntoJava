@@ -1,7 +1,7 @@
-package xyz.glabaystudios.discord.handlers.impl;
+package xyz.glabaystudios.discord.handlers.modals.impl;
 
-import xyz.glabaystudios.discord.handlers.ModalHandler;
-import xyz.glabaystudios.network.RegistrationNetwork;
+import xyz.glabaystudios.discord.handlers.modals.ModalHandler;
+import xyz.glabaystudios.network.impl.RegistrationNetwork;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
 import net.dv8tion.jda.api.interactions.modals.ModalMapping;
@@ -23,7 +23,7 @@ public class RegistrationForm implements ModalHandler, RegistrationNetwork {
         String lastName = fields.get(3).getAsString();
         String password = fields.get(4).getAsString();
 
-        RegistrationFormDTO dto = new RegistrationFormDTO();
+        var dto = new RegistrationFormDTO();
             dto.setUsername(username);
             dto.setEmail(email);
             dto.setFirstName(firstName);

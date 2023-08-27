@@ -1,7 +1,7 @@
-package xyz.glabaystudios.discord.commands.impl;
+package xyz.glabaystudios.discord.handlers.commands.impl;
 
-import xyz.glabaystudios.discord.commands.DisSlash;
-import xyz.glabaystudios.network.BookShelfNetwork;
+import xyz.glabaystudios.discord.handlers.commands.DisSlash;
+import xyz.glabaystudios.network.impl.BookShelfNetwork;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.InteractionHook;
@@ -61,7 +61,7 @@ public class BookShelf implements DisSlash, BookShelfNetwork {
             str += "|".concat(toggle ? "1" : "0");
         }
         var shelfDTOList = getBookshelvesForUser(discordUserId);
-        String finalStr = str;
+        String finalStr = str; // |1|1|0|0
         var shelves = shelfDTOList.stream()
                 .map(shelf -> SelectOption.of(shelf.getShelfName(), "EDIT_SHELF_".concat(shelf.getShelfId().toString()).concat(finalStr)))
                 .toList();

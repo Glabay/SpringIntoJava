@@ -13,4 +13,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     Collection<Book> findByShelfIdAndOwnerDiscordId(Long shelfId, Long ownerDiscordId);
     Collection<Book> findByShelfId(Long shelfId);
+
+    Collection<Book> findByShelfIdLessThanAndOwnerDiscordId(Long shelfId, Long ownerDiscordId);
 }

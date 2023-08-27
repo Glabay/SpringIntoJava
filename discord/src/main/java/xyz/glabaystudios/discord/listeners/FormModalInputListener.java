@@ -1,6 +1,6 @@
 package xyz.glabaystudios.discord.listeners;
 
-import xyz.glabaystudios.discord.handlers.impl.RegistrationForm;
+import xyz.glabaystudios.discord.handlers.modals.impl.RegistrationForm;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;

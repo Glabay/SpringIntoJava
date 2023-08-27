@@ -1,8 +1,9 @@
-package xyz.glabaystudios.network;
+package xyz.glabaystudios.network.impl;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.impl.client.CloseableHttpClient;
+import xyz.glabaystudios.network.GlabayStudiosNetwork;
 import xyz.glabaystudios.network.dto.RegistrationFormDTO;
 
 import java.io.IOException;

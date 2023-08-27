@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 import net.dv8tion.jda.api.interactions.commands.build.SubcommandData;
 import net.dv8tion.jda.api.requests.GatewayIntent;
 import net.dv8tion.jda.api.utils.cache.CacheFlag;
-import xyz.glabaystudios.discord.listeners.DiscordListener;
+import xyz.glabaystudios.discord.listeners.SlashCommandListener;
 import xyz.glabaystudios.discord.listeners.FormModalInputListener;
 
 import java.util.ArrayList;
@@ -64,7 +64,7 @@ public class Discord {
             api = getJdaBuilder().build();
 
             // add the listeners
-            getDiscordBotApi().addEventListener(new DiscordListener(), new FormModalInputListener());
+            getDiscordBotApi().addEventListener(new SlashCommandListener(), new FormModalInputListener());
 
             // create a list of "Slash Commands"
             List<CommandData> commands = new ArrayList<>();

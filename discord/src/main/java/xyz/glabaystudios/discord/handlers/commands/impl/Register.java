@@ -1,6 +1,6 @@
-package xyz.glabaystudios.discord.commands.impl;
+package xyz.glabaystudios.discord.handlers.commands.impl;
 
-import xyz.glabaystudios.discord.commands.DisSlash;
+import xyz.glabaystudios.discord.handlers.commands.DisSlash;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.interactions.components.Modal;

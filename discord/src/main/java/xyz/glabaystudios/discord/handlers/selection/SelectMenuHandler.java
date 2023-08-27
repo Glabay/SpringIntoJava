@@ -1,4 +1,4 @@
-package xyz.glabaystudios.discord.selection;
+package xyz.glabaystudios.discord.handlers.selection;
 
 import net.dv8tion.jda.api.events.interaction.component.SelectMenuInteractionEvent;
 

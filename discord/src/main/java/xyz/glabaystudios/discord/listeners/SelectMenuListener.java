@@ -4,7 +4,7 @@ import net.dv8tion.jda.api.events.interaction.component.SelectMenuInteractionEve
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.selections.SelectMenu;
 import org.jetbrains.annotations.NotNull;
-import xyz.glabaystudios.discord.selection.impl.BookShelfEdit;
+import xyz.glabaystudios.discord.handlers.selection.impl.BookShelfEdit;
 
 import java.util.Objects;
 
@@ -22,7 +22,7 @@ public class SelectMenuListener extends ListenerAdapter {
         switch(trigger) {
             case "EDIT_BOOKSHELF_SELECTION" -> new BookShelfEdit().onSelectionSubmission(event);
 
-            default -> System.out.println("[BookShelfEdit] - () -> Unhandled trigger: ".concat(trigger));
+            default -> System.out.println("[SelectMenuListener] - (onSelectMenuInteraction) -> Unhandled trigger: ".concat(trigger));
         }
     }
 }

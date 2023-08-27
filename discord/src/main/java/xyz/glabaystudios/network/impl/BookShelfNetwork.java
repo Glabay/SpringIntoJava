@@ -1,10 +1,12 @@
-package xyz.glabaystudios.network;
+package xyz.glabaystudios.network.impl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpStatus;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.util.EntityUtils;
+import xyz.glabaystudios.network.GlabayStudiosNetwork;
+import xyz.glabaystudios.network.dto.BookDTO;
 import xyz.glabaystudios.network.dto.BookShelfDTO;
 
 import java.io.IOException;
@@ -38,6 +40,32 @@ public interface BookShelfNetwork extends GlabayStudiosNetwork {
     default List<BookShelfDTO> getBookshelvesForUser(Long discordUserId) {
         try {
             var response = fetchHttpGetResponse(BASE_API_ENDPOINT.concat("/v1/bookshelf/fetch/shelves/").concat(discordUserId.toString()), getHttpClient());
+            if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK)
+                return null;
+            else
+                return new ObjectMapper().readValue(EntityUtils.toString(response.getEntity(), "UTF-8"), new TypeReference<>() {});
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    default List<BookDTO> getBooksForUserNotOnShelf(Long discordUserId) {
+        try {
+            var response = fetchHttpGetResponse(BASE_API_ENDPOINT.concat("/v1/book/all/no-shelf/").concat(discordUserId.toString()), getHttpClient());
+            if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK)
+                return null;
+            else
+                return new ObjectMapper().readValue(EntityUtils.toString(response.getEntity(), "UTF-8"), new TypeReference<>() {});
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    default List<BookDTO> getBooksForUserOnShelf(Long discordUserId, Long shelfId) {
+        try {
+            var response = fetchHttpGetResponse(BASE_API_ENDPOINT.concat("/v1/book/all/%d/%d".formatted(shelfId, discordUserId)), getHttpClient());
             if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK)
                 return null;
             else

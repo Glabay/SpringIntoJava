@@ -1,4 +1,4 @@
-package xyz.glabaystudios.discord.handlers;
+package xyz.glabaystudios.discord.handlers.modals;
 
 import net.dv8tion.jda.api.events.interaction.ModalInteractionEvent;
 

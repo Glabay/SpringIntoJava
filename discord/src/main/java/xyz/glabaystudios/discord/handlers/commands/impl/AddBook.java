@@ -1,7 +1,7 @@
-package xyz.glabaystudios.discord.commands.impl;
+package xyz.glabaystudios.discord.handlers.commands.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import xyz.glabaystudios.discord.commands.DisSlash;
+import xyz.glabaystudios.discord.handlers.commands.DisSlash;
 import xyz.glabaystudios.network.GlabayStudiosNetwork;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Member;
